@@ -13,6 +13,10 @@ let SecretNumber = Math.trunc(Math.random()*20) +1;
 let score = 20; 
 let highScore = 0;
 
+const displayMessage = function(message) {
+    document.querySelector('.message').textContent = 
+    message;
+}
 
 document.querySelector('.check').addEventListener 
 ('click', function() {
@@ -22,10 +26,13 @@ document.querySelector('.check').addEventListener
 
     // When no input
     if (!guess) {
-        document.querySelector('.message').textContent = 
-        "No Number!";
+        // document.querySelector('.message').textContent = 
+        // "No Number!";
+        displayMessage("No Number!");
 
-    // When Player wins
+
+
+ // When Player wins
     } else if (guess === SecretNumber) {
         document.querySelector('.message').textContent = 'Correct Number!';
 
@@ -36,28 +43,35 @@ document.querySelector('.check').addEventListener
         if (score > highScore) {
             highScore = score;
             document.querySelector('.highscore').textContent = highScore; 
+        
+            // when guess is not correct 
         }
-    // When guess is too high
-    } else if (guess > SecretNumber) {
-        if (score > 1 ) {
-            document.querySelector('.message').textContent = 'Too high!';
-            score--;
-            document.querySelector('.score').textContent = score;
-        } else {
-            document.querySelector('.message').textContent = 'Sorry you lost the game!'; 
+
+
+        // When guess is too high
         }
+         else if (guess > SecretNumber) {
+                if (score > 1 ) {
+                    displayMessage('Too high!');
+                    // document.querySelector('.message').textContent = 'Too high!';
+                    score--;
+                    document.querySelector('.score').textContent = score;
+                } else {
+                    document.querySelector('.message').textContent = 'Sorry you lost the game!'; 
+                }
+        
         
         // When guess is too low
     } else if (guess < SecretNumber) {
         if (score > 1 ) {
-            document.querySelector('.message').textContent = 'Too low!';
+            displayMessage('Too low!');
+            // document.querySelector('.message').textContent = 'Too low!';
             score--;
             document.querySelector('.score').textContent = score;
         } else {
             document.querySelector('.message').textContent = 'Sorry you lost the game!'; 
         }
-        }
-        
+    }
 
 });
 
