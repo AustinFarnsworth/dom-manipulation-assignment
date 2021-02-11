@@ -34,7 +34,8 @@ document.querySelector('.check').addEventListener
 
  // When Player wins
     } else if (guess === SecretNumber) {
-        document.querySelector('.message').textContent = 'Correct Number!';
+        // document.querySelector('.message').textContent = 'Correct Number!';
+        displayMessage("Correct Number! You Win!");
 
         document.querySelector('body').style.backgroundColor = '#4b7a47';
         document.querySelector('.number').textContent = SecretNumber; 
@@ -57,7 +58,7 @@ document.querySelector('.check').addEventListener
                     score--;
                     document.querySelector('.score').textContent = score;
                 } else {
-                    document.querySelector('.message').textContent = 'Sorry you lost the game!'; 
+                    displayMessage("Sorry You Lost the game!");
                 }
         
         
@@ -69,7 +70,8 @@ document.querySelector('.check').addEventListener
             score--;
             document.querySelector('.score').textContent = score;
         } else {
-            document.querySelector('.message').textContent = 'Sorry you lost the game!'; 
+            
+            displayMessage("Sorry You Lost the game!");
         }
     }
 
